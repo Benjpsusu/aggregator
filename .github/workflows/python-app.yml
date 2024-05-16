@@ -32,11 +32,8 @@ jobs:
         git config user.name "GitHub Actions Bot"
         git config user.email "actions@github.com"
 
-    - name: Create/Update Gist
-      env:
-        GH_TOKEN: ${{ secrets.PAT}}
+    - name: Commit and push changes
       run: |
-        gh gist edit ${{ secrets.GIST_ID }} --add "proxies.yaml"
-        gh gist edit ${{ secrets.GIST_ID }} --add "subscribes.txt"
-        gh gist edit ${{ secrets.GIST_ID }} --add "domains.txt"
-        gh gist edit ${{ secrets.GIST_ID }} --add "valid-domains.txt"
+        git add data/ || true
+        git commit -m "Add generated output.yaml" || true
+        git push || true
