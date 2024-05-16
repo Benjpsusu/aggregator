@@ -34,6 +34,6 @@ jobs:
 
     - name: Commit and push changes
       run: |
-        git add data/proxies.yaml
+        git add aggregator/data/proxies.yaml
         git commit -m "Add generated output.yaml"
         git push
